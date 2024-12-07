@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "build": "lerna run build --ignore web",
-    "version": "lerna version --no-git-tag-version",
-    "build-and-version": "lerna run build --ignore web && lerna version",
+    "version": "lerna version",
+    "build-and-version": "lerna run build --ignore web && lerna version --no-git-tag-version",
     "publish:all": "lerna publish from-package --no-git-tag-version --no-commit-hooks"
   },
   "workspaces": [
