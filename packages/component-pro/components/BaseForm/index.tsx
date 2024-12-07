@@ -1,11 +1,23 @@
+import { forwardRef, ReactNode, useImperativeHandle, useRef } from "react";
 import { Form, FormInstance, type FormProps } from "antd";
-import { forwardRef, useImperativeHandle, useRef } from "react";
 
-interface Iprops extends FormProps {}
+interface Iprops extends FormProps {
+  children: ReactNode;
+}
 
-const BaseForm = forwardRef<FormInstance, Iprops>(props => {
+const BaseForm = forwardRef<FormInstance, Iprops>((props, ref) => {
+  const { children } = props;
   const formRef = useRef<FormInstance>(null);
-  return <Form ref={formRef} {...props}></Form>;
+
+  useImperativeHandle(ref, () => ({
+    ...(formRef.current as FormInstance)
+  }));
+
+  return (
+    <Form ref={formRef} {...props}>
+      {children}
+    </Form>
+  );
 });
 
 export default BaseForm;

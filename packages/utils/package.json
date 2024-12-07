@@ -1,16 +1,19 @@
 {
   "name": "@antd-core/utils",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.0",
   "type": "module",
   "main": "dist/index.umd.js",
   "module ": "dist/index.es.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "import": "dist/index.umd.js",
       "require": "dist/index.es.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -35,4 +38,3 @@
     "vite": "^6.0.1"
   }
 }
-

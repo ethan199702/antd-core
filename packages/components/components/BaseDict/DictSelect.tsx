@@ -1,4 +1,6 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, 
+  
+ } from "react";
 import { Select } from "antd";
 
 interface IProps {
@@ -9,11 +11,10 @@ interface IProps {
   }[];
 }
 
-const DistSelect: FC<IProps> = ({ distType, options }) => {
-  const [list, setList] = useState(options || []);
+const DistSelect: FC<IProps> = () => {
 
   useEffect(() => {}, []);
-  return <Select options={list}></Select>;
+  return <Select ></Select>;
 };
 
 export default DistSelect;

@@ -5,7 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "lerna run build --ignore web"
+    "build": "lerna run build --ignore web",
+    "version": "lerna version --no-git-tag-version",
+    "build-and-version": "lerna run build --ignore web && lerna version --no-git-tag-version"
   },
   "workspaces": [
     "packages/*"
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@eslint/js": "^9.15.0",
     "@types/lodash": "^4.17.13",
+    "@types/node": "^22.10.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
@@ -37,3 +40,4 @@
     "vite-plugin-dts": "^4.3.0"
   }
 }
+
