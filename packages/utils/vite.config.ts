@@ -7,8 +7,8 @@ export default defineConfig({
   plugins: [react(), dts()],
   build: {
     lib: {
-      entry: "./components/index.ts", // 组件库的入口文件
-      name: "components-pro",
+      entry: "./src/index.ts", // 组件库的入口文件
+      name: "utils",
       fileName: format => `index.${format}.js`
     },
     rollupOptions: {

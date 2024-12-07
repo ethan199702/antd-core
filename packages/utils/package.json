@@ -1,27 +1,28 @@
 {
-  "name": "antd-core",
-  "version": "0.0.0",
+  "name": "@antd-core/utils",
   "private": true,
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "lerna run build --ignore web"
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/index.umd.js",
+  "module ": "dist/index.es.js",
+  "exports": {
+    ".": {
+      "import": "dist/index.umd.js",
+      "require": "dist/index.es.js"
+    }
   },
-  "workspaces": [
-    "packages/*"
-  ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "antd": "^5.22.3",
-    "lodash": "^4.17.21",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
-    "@types/lodash": "^4.17.13",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
@@ -29,11 +30,9 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.12.0",
-    "lerna": "^8.1.9",
-    "prettier": "^3.4.1",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.15.0",
-    "vite": "^6.0.1",
-    "vite-plugin-dts": "^4.3.0"
+    "vite": "^6.0.1"
   }
 }
+

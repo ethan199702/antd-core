@@ -3,11 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.umd.js",
+  "module ": "dist/index.es.js",
   "exports": {
     ".": {
-      "import": "dist/index.js",
-      "require": "dist/index.cjs"
+      "import": "dist/index.umd.js",
+      "require": "dist/index.es.js"
     }
   },
   "scripts": {
