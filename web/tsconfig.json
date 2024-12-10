@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@antd-core/components-pro": ["../packages/component-pro/components"]
+      "@antd-core/components-pro/*": ["../packages/component-pro/*"]
     }
   },
   "extends": "../tsconfig.json"

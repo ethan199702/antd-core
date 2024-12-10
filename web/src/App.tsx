@@ -1,12 +1,20 @@
-import { BaseForm } from "@antd-core/components-pro";
-import { Form } from "antd";
+import { BaseForm } from "@antd-core/components-pro/components";
+import type { IFieldItem } from "@antd-core/components-pro/components/BaseForm/shared";
 
 const App = () => {
+  const fields: IFieldItem[] = [
+    {
+      name: "name",
+      label: "Name"
+    },
+    {
+      name: "user",
+      label: "User"
+    }
+  ];
   return (
     <div>
-      <BaseForm<{ name: string }>>
-        <Form.Item label="11"></Form.Item>
-      </BaseForm>
+      <BaseForm<{ name: string; user: string }> fields={fields}></BaseForm>
     </div>
   );
 };

@@ -23,15 +23,16 @@ interface IDynamicFieldProps {
 }
 
 const DynamicField: FC<IDynamicFieldProps> = ({
-  valueType,
+  valueType = "text",
   options,
+  value = "",
   ...restProps
 }) => {
   const Component = componentMap[valueType] || Input;
 
   return (
-    <Component {...restProps}>
-      {(valueType === "select" || valueType === "checkbox") && (
+    <Component {...restProps} value={value}>
+      {/* {(valueType === "select" || valueType === "checkbox") && (
         <Component options={options}></Component>
       )}
       {valueType === "radio" && (
@@ -40,7 +41,7 @@ const DynamicField: FC<IDynamicFieldProps> = ({
             <Radio value={v.value}>{v.label}</Radio>
           ))}
         </Component>
-      )}
+      )} */}
     </Component>
   );
 };

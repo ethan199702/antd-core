@@ -9,7 +9,7 @@ export default defineConfig({
     alias: {
       "@antd-core/components-pro": path.resolve(
         __dirname,
-        "../packages/component-pro/components"
+        "../packages/component-pro"
       )
     }
   }

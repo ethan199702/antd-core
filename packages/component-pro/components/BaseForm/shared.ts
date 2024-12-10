@@ -18,12 +18,11 @@ export interface IFieldItem<T = any> extends FormItemProps {
   valueType?: ValueType;
   attrs?: Record<string, any>;
   value?: T;
-  record: Record<string, any>;
-  render?: (value: T, record: Record<string, any>) => ReactNode;
+  record?: Record<string, any>;
+  render?: (value?: T, record?: Record<string, any>) => ReactNode;
 }
 
 export interface IProps<T = Record<string, any>> extends FormProps {
-  children: ReactNode;
   onFinish?: (values: T) => Promise<any>;
   formKey?: string;
   request?: (params: T) => Promise<any>;
