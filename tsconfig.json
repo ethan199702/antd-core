@@ -20,6 +20,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "incremental": true
+    "incremental": true,
+
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true
   }
 }

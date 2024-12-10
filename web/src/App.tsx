@@ -4,7 +4,7 @@ import { Form } from "antd";
 const App = () => {
   return (
     <div>
-      <BaseForm>
+      <BaseForm<{ name: string }>>
         <Form.Item label="11"></Form.Item>
       </BaseForm>
     </div>

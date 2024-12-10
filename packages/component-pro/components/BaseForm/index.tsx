@@ -1,23 +1,31 @@
-import { forwardRef, ReactNode, useImperativeHandle, useRef } from "react";
-import { Form, FormInstance, type FormProps } from "antd";
+import {
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  Ref,
+  ReactElement
+} from "react";
+import { Form, FormInstance } from "antd";
+import type { IProps } from "./shared";
 
-interface Iprops extends FormProps {
-  children: ReactNode;
-}
-
-const BaseForm = forwardRef<FormInstance, Iprops>((props, ref) => {
-  const { children } = props;
-  const formRef = useRef<FormInstance>(null);
+const BaseForm = <T extends Record<string, any> = any>(
+  props: IProps<T>,
+  ref: Ref<FormInstance<T>>
+) => {
+  const { children, ...restProps } = props;
+  const formRef = useRef<FormInstance<T>>(null);
 
   useImperativeHandle(ref, () => ({
-    ...(formRef.current as FormInstance)
+    ...(formRef.current as FormInstance<T>)
   }));
 
   return (
-    <Form ref={formRef} {...props}>
+    <Form ref={formRef} {...restProps}>
       {children}
     </Form>
   );
-});
+};
 
-export default BaseForm;
+export default forwardRef(BaseForm) as <T extends Record<string, any> = any>(
+  props: IProps<T> & { ref?: Ref<FormInstance<T>> }
+) => ReactElement;
