@@ -31,18 +31,19 @@ const DynamicField: FC<IDynamicFieldProps> = ({
   const Component = componentMap[valueType] || Input;
 
   return (
-    <Component {...restProps} value={value}>
-      {/* {(valueType === "select" || valueType === "checkbox") && (
+    <>
+      {["select", "checkbox"].includes(valueType) && (
         <Component options={options}></Component>
       )}
-      {valueType === "radio" && (
+      {["radio"].includes(valueType) && (
         <Component>
           {options.map((v: any) => (
             <Radio value={v.value}>{v.label}</Radio>
           ))}
         </Component>
-      )} */}
-    </Component>
+      )}
+      <Component {...restProps} value={value} />
+    </>
   );
 };
 

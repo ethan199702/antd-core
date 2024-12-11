@@ -23,8 +23,10 @@ export interface IFieldItem<T = any> extends FormItemProps {
 }
 
 export interface IProps<T = Record<string, any>> extends FormProps {
-  onFinish?: (values: T) => Promise<any>;
+  onFinish?: (values: T) => void;
   formKey?: string;
   request?: (params: T) => Promise<any>;
   fields: IFieldItem<T[keyof T]>[];
+  footer?: ReactNode;
+  submitText?: string; // 提交按钮文案
 }
