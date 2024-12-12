@@ -19,7 +19,7 @@ const BaseForm = <T extends Record<string, any> = any>(
     request,
     fields,
     submitText = "提交",
-    footer,
+    footer = true,
     labelCol = { span: 4 },
     wrapperCol = { span: 20 },
     ...restProps
@@ -30,20 +30,9 @@ const BaseForm = <T extends Record<string, any> = any>(
     ...(formRef.current as FormInstance<T>)
   }));
 
-  return (
-    <Form
-      ref={formRef}
-      {...restProps}
-      labelCol={labelCol}
-      wrapperCol={wrapperCol}
-      onFinish={props?.onFinish}
-    >
-      {fields.map((field, index) => (
-        <BaseFormItem {...field} key={index}></BaseFormItem>
-      ))}
-      {footer ? (
-        footer
-      ) : (
+  const formFooter = () => {
+    if (footer === true)
+      return (
         <Form.Item
           labelCol={labelCol}
           wrapperCol={wrapperCol}
@@ -57,7 +46,25 @@ const BaseForm = <T extends Record<string, any> = any>(
             </Button>
           </Space>
         </Form.Item>
-      )}
+      );
+
+    if (footer === false || footer === null) return null;
+
+    return footer;
+  };
+
+  return (
+    <Form
+      ref={formRef}
+      {...restProps}
+      labelCol={labelCol}
+      wrapperCol={wrapperCol}
+      onFinish={props?.onFinish}
+    >
+      {fields.map((field, index) => (
+        <BaseFormItem {...field} key={index}></BaseFormItem>
+      ))}
+      {formFooter()}
     </Form>
   );
 };

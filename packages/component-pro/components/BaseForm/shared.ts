@@ -27,6 +27,6 @@ export interface IProps<T = Record<string, any>> extends FormProps {
   formKey?: string;
   request?: (params: T) => Promise<any>;
   fields: IFieldItem<T[keyof T]>[];
-  footer?: ReactNode;
+  footer?: ReactNode | null | boolean;
   submitText?: string; // 提交按钮文案
 }
