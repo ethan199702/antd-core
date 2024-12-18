@@ -1,7 +1,7 @@
 import { ComponentType, FC } from "react";
 import { Checkbox, DatePicker, Input, InputNumber, Radio, Select } from "antd";
 
-import type { ValueType } from "../shared";
+import type { ValueType } from "../../shared";
 
 const { RangePicker } = DatePicker;
 

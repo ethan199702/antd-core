@@ -1,16 +1,6 @@
 import { ReactNode } from "react";
 import { type FormProps, type FormItemProps } from "antd";
-
-export type ValueType =
-  | "text"
-  | "select"
-  | "radio"
-  | "checkbox"
-  | "date"
-  | "range"
-  | "number"
-  | "password"
-  | "textarea";
+import type { ValueType } from "../shared";
 
 export interface IFieldItem<T = any> extends FormItemProps {
   name: string | number | (string | number)[];
