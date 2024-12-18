@@ -5,6 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "commit": "git-cz",
+    "prepare": "husky install",
     "build": "lerna run build --ignore web",
     "version": "lerna version",
     "build-and-version": "lerna run build --ignore web && lerna version --no-git-tag-version",
@@ -13,6 +15,16 @@
   "workspaces": [
     "packages/*"
   ],
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.tsx": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -23,22 +35,33 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
     "@eslint/js": "^9.15.0",
     "@types/lodash": "^4.17.13",
     "@types/node": "^22.10.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "commitizen": "^4.3.1",
+    "cz-customizable": "^7.3.0",
     "eslint": "^9.15.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.12.0",
+    "husky": "^9.1.7",
     "lerna": "^8.1.9",
+    "lint-staged": "^15.2.11",
     "prettier": "^3.4.1",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.15.0",
     "vite": "^6.0.1",
     "vite-plugin-dts": "^4.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
   }
 }
 
