@@ -1,6 +1,4 @@
-import { FC, useEffect, 
-  
- } from "react";
+import { FC, useEffect } from "react";
 import { Select } from "antd";
 
 interface IProps {
@@ -12,9 +10,8 @@ interface IProps {
 }
 
 const DistSelect: FC<IProps> = () => {
-
   useEffect(() => {}, []);
-  return <Select ></Select>;
+  return <Select></Select>;
 };
 
 export default DistSelect;
