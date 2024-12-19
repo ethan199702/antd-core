@@ -14,7 +14,8 @@ const componentMap: Record<ValueType, ComponentType<any>> = {
   radio: Radio.Group,
   checkbox: Checkbox.Group,
   date: DatePicker,
-  range: RangePicker
+  range: RangePicker,
+  dict: Select
 };
 
 interface IDynamicFieldProps {

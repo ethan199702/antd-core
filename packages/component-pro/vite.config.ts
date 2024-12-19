@@ -21,6 +21,13 @@ export default defineConfig({
         }
       }
     }
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true // 允许在 Less 文件中使用 JavaScript（如果需要）
+      }
+    }
   }
 });
 

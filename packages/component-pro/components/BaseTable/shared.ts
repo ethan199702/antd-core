@@ -21,7 +21,7 @@ export interface BaseTableColumnProps<T = AnyObject>
   /** 自定义渲染添加、编辑表单 */
   renderAddOrEditFormItem?: (record: T, index: number) => React.ReactNode;
   /** 自定义渲染搜索表单 */
-  renderSearchFormItem: (record: T, index: number) => React.ReactNode;
+  renderSearchFormItem?: (record: T, index: number) => React.ReactNode;
 }
 
 export interface BaseTableProps<T = AnyObject> extends TableProps<T> {

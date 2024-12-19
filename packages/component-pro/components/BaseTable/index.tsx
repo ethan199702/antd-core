@@ -3,6 +3,7 @@ import { forwardRef, useImperativeHandle } from "react";
 import { Table } from "antd";
 
 import BaseTableColumn from "./components/BaseTableColumn";
+import BaseSearchForm from "./components/BaseSearchForm";
 
 import type { BaseTableProps } from "./shared";
 
@@ -12,12 +13,14 @@ const BaseTable = forwardRef((props: BaseTableProps, ref) => {
   useImperativeHandle(ref, () => ({}));
 
   return (
-    <Table {...resProps}>
-      {columns.map(column => (
-        <BaseTableColumn key={column.key} {...column} />
-      ))}
-      BaseTable
-    </Table>
+    <div>
+      <BaseSearchForm columns={columns} />
+      <Table {...resProps}>
+        {columns.map(column => (
+          <BaseTableColumn key={column.key} {...column} />
+        ))}
+      </Table>
+    </div>
   );
 });
 
