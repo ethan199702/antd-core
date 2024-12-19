@@ -13,10 +13,12 @@ const App = () => {
   ];
 
   const data = [
-    { name: "a", age: 1 },
-    { name: "b", age: 12 }
+    { name: "a", age: 1, index: 1 },
+    { name: "b", age: 12, index: 2 }
   ];
-  return <BaseTable columns={columns} dataSource={data}></BaseTable>;
+  return (
+    <BaseTable columns={columns} dataSource={data} rowKey={"index"}></BaseTable>
+  );
 };
 
 export default App;

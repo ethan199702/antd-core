@@ -4,7 +4,7 @@ import { Button, Form, Space } from "antd";
 import BaseForm from "../../../BaseForm";
 import type { BaseTableColumnProps } from "../../shared";
 
-import styles from "./index.modules.less";
+import styles from "./index.module.less";
 
 interface Iprops {
   columns: BaseTableColumnProps[];
@@ -22,7 +22,7 @@ const BaseSearchForm = (props: Iprops) => {
         valueType: column.valueType || "text"
       }));
     setFields(fields);
-  });
+  }, []);
 
   const footer = (
     <Form.Item>

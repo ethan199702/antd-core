@@ -9,6 +9,8 @@ export type AnyObject = Record<PropertyKey, any>;
 export interface BaseTableColumnProps<T = AnyObject>
   extends ColumnType<T>,
     Partial<ColumnGroupType<T>> {
+  title?: string;
+  dataIndex?: string;
   valueType?: ValueType;
   /** 是否在搜索表单隐藏 */
   hideInSearchForm?: boolean;

@@ -5,6 +5,7 @@ import dts from "vite-plugin-dts";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), dts()],
+
   build: {
     lib: {
       entry: "./components/index.ts", // 组件库的入口文件
