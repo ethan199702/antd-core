@@ -6,10 +6,16 @@ type PropertyKey = string | number | symbol;
 
 export type AnyObject = Record<PropertyKey, any>;
 
+export type ColumnsType<RecordType = AnyObject> = (
+  | ColumnGroupType<RecordType>
+  | ColumnType<RecordType>
+)[];
+
 export interface BaseTableColumnProps<T = AnyObject>
   extends ColumnType<T>,
     Partial<ColumnGroupType<T>> {
   title?: string;
+  type?: "selection" | "index" | "expand" | "operation";
   dataIndex?: string;
   valueType?: ValueType;
   /** 是否在搜索表单隐藏 */
@@ -24,6 +30,8 @@ export interface BaseTableColumnProps<T = AnyObject>
   renderAddOrEditFormItem?: (record: T, index: number) => React.ReactNode;
   /** 自定义渲染搜索表单 */
   renderSearchFormItem?: (record: T, index: number) => React.ReactNode;
+  /** 额外配置 */
+  extraProps?: AnyObject;
 }
 
 export interface BaseTableProps<T = AnyObject> extends TableProps<T> {
