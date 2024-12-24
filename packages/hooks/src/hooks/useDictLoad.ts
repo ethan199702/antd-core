@@ -1,0 +1,3 @@
+const useDictLoad = () => {};
+
+export { useDictLoad };

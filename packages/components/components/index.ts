@@ -1,1 +1,1 @@
-export { default as BaseDict } from "./BaseDict";
+export { DictSelect, DictText } from "./BaseDict";

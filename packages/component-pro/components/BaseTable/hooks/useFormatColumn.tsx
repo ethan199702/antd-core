@@ -5,7 +5,8 @@ const randomNUmber = () => {
 };
 const useFormatColumn = (columns: BaseTableColumnProps[]): ColumnsType => {
   return columns.map(v => {
-    const { valueType = "text", dataIndex, title, render } = v;
+    const { valueType = "text", dataIndex, title, render, extraProps } = v;
+
     if (render) {
       return {
         title,

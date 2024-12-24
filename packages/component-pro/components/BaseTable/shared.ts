@@ -31,7 +31,11 @@ export interface BaseTableColumnProps<T = AnyObject>
   /** 自定义渲染搜索表单 */
   renderSearchFormItem?: (record: T, index: number) => React.ReactNode;
   /** 额外配置 */
-  extraProps?: AnyObject;
+  extraProps?: {
+    dictType?: string;
+    options?: { label: string; value: string }[];
+    [key: string]: any;
+  };
 }
 
 export interface BaseTableProps<T = AnyObject> extends TableProps<T> {

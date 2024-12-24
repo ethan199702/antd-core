@@ -1,7 +1,2 @@
-import { Button } from "antd";
-
-const BaseDict = () => {
-  return <Button type="primary">按钮</Button>;
-};
-
-export default BaseDict;
+export { default as DictSelect } from "./DictSelect";
+export { default as DictText } from "./DictText";
