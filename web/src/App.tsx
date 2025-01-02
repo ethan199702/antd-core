@@ -1,4 +1,11 @@
 import { BaseTable } from "@antd-core/components-pro/components";
+import { Button, Space } from "antd";
+import {
+  PlusOutlined,
+  DownloadOutlined,
+  UploadOutlined,
+  DeleteOutlined
+} from "@ant-design/icons";
 
 const App = () => {
   const columns = [
@@ -17,7 +24,30 @@ const App = () => {
     { name: "b", age: 12, index: 2 }
   ];
   return (
-    <BaseTable columns={columns} dataSource={data} rowKey={"index"}></BaseTable>
+    <BaseTable<{ name: string; age: number; index: number }>
+      columns={columns}
+      dataSource={data}
+      rowKey={"index"}
+      CurdConfig={{
+        initFormData: { name: "a", age: 1 }
+      }}
+      toolbar={
+        <Space>
+          <Button type="primary" icon={<PlusOutlined />}>
+            新增
+          </Button>
+          <Button type="primary" icon={<UploadOutlined />}>
+            导入
+          </Button>
+          <Button type="primary" icon={<DownloadOutlined />}>
+            导出
+          </Button>
+          <Button type="primary" danger icon={<DeleteOutlined />}>
+            批量删除
+          </Button>
+        </Space>
+      }
+    ></BaseTable>
   );
 };
 

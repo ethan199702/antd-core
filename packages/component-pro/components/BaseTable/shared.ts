@@ -38,6 +38,15 @@ export interface BaseTableColumnProps<T = AnyObject>
   };
 }
 
+// 初始化表单数据
+type InitFormDataType<T> = Partial<T>;
+
 export interface BaseTableProps<T = AnyObject> extends TableProps<T> {
   columns: BaseTableColumnProps<T>[];
+  toolbar?: React.ReactNode;
+
+  CurdConfig?: {
+    initFormData?: InitFormDataType<T>;
+    addOrEditForm?: React.ReactNode;
+  };
 }

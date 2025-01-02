@@ -1,23 +1,35 @@
-import { forwardRef, useImperativeHandle } from "react";
+import { forwardRef, useImperativeHandle, ReactElement } from "react";
 
 import { Table } from "antd";
-
 import BaseSearchForm from "./components/BaseSearchForm";
+import { BaseTableAddOrEditDialog } from "./curd";
 
-import type { BaseTableProps } from "./shared";
+import type { BaseTableProps, AnyObject } from "./shared";
 
-const BaseTable = forwardRef((props: BaseTableProps, ref) => {
-  const { columns, dataSource, rowKey = "id", ...resProps } = props;
+import style from "./index.module.less";
+
+import { useFormatColumn } from "./hooks/useFormatColumn";
+
+const BaseTable = <T extends AnyObject>(props: BaseTableProps<T>, ref: any) => {
+  const {
+    columns,
+    dataSource,
+    rowKey = "id",
+    toolbar,
+    CurdConfig,
+    ...resProps
+  } = props;
 
   useImperativeHandle(ref, () => ({}));
-  const processedColumns = columns.map(column => ({
-    ...column,
-    key: column.dataIndex
-  }));
 
+  const processedColumns = useFormatColumn(columns);
   return (
-    <div>
-      <BaseSearchForm columns={columns} />
+    <div className={style.base_table}>
+      <BaseSearchForm<T> columns={columns} />
+      <BaseTableAddOrEditDialog />
+      <div className={style.base_table_toolbar}>
+        <div className={style.base_table_toolbar_custom_button}>{toolbar}</div>
+      </div>
       <Table
         rowKey={rowKey}
         dataSource={dataSource}
@@ -26,6 +38,8 @@ const BaseTable = forwardRef((props: BaseTableProps, ref) => {
       ></Table>
     </div>
   );
-});
+};
 
-export default BaseTable;
+export default forwardRef(BaseTable) as <T extends AnyObject = AnyObject>(
+  props: BaseTableProps<T> & { ref?: any }
+) => ReactElement;

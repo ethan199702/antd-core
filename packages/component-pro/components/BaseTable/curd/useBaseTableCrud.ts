@@ -1,0 +1,3 @@
+const useBaseTableCrud = () => {};
+
+export { useBaseTableCrud };

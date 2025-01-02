@@ -20,8 +20,8 @@ const BaseForm = <T extends Record<string, any> = any>(
     fields,
     submitText = "提交",
     footer = true,
-    labelCol = { span: 4 },
-    wrapperCol = { span: 20 },
+    labelCol = { span: 6 },
+    wrapperCol = { span: 18 },
     ...restProps
   } = props;
   const formRef = useRef<FormInstance<T>>(null);
