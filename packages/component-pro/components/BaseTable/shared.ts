@@ -11,6 +11,19 @@ export type ColumnsType<RecordType = AnyObject> = (
   | ColumnType<RecordType>
 )[];
 
+/** Curdconfig 配置项 */
+export type CurdConfig<T = AnyObject> = {
+  initFormData?: InitFormDataType<T>;
+  doAddOrEdit?: (values: T) => void;
+};
+
+/** 操作函数 */
+export type ToolbarButton<T = AnyObject> = ({
+  doAddOrEdit
+}: {
+  doAddOrEdit: (values?: T) => void;
+}) => React.ReactNode;
+
 export interface BaseTableColumnProps<T = AnyObject>
   extends ColumnType<T>,
     Partial<ColumnGroupType<T>> {
@@ -43,10 +56,6 @@ type InitFormDataType<T> = Partial<T>;
 
 export interface BaseTableProps<T = AnyObject> extends TableProps<T> {
   columns: BaseTableColumnProps<T>[];
-  toolbar?: React.ReactNode;
-
-  CurdConfig?: {
-    initFormData?: InitFormDataType<T>;
-    addOrEditForm?: React.ReactNode;
-  };
+  toolbar?: React.ReactNode | ToolbarButton<T>;
+  CurdConfig?: CurdConfig<T>;
 }

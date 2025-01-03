@@ -9,6 +9,8 @@ import {
 
 const App = () => {
   const columns = [
+    { type: "index" as "index" | "selection" | "expand" | "operation" },
+
     {
       title: "NAME",
       dataIndex: "name"
@@ -29,11 +31,14 @@ const App = () => {
       dataSource={data}
       rowKey={"index"}
       CurdConfig={{
-        initFormData: { name: "a", age: 1 }
+        initFormData: { name: "a", age: 1 },
+        doAddOrEdit: () => {
+          console.log("doAddOrEdit", 111);
+        }
       }}
-      toolbar={
+      toolbar={({ doAddOrEdit }) => (
         <Space>
-          <Button type="primary" icon={<PlusOutlined />}>
+          <Button type="primary" icon={<PlusOutlined />} onClick={doAddOrEdit}>
             新增
           </Button>
           <Button type="primary" icon={<UploadOutlined />}>
@@ -46,7 +51,7 @@ const App = () => {
             批量删除
           </Button>
         </Space>
-      }
+      )}
     ></BaseTable>
   );
 };

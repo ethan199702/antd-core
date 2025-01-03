@@ -9,6 +9,7 @@ import type { BaseTableProps, AnyObject } from "./shared";
 import style from "./index.module.less";
 
 import { useFormatColumn } from "./hooks/useFormatColumn";
+import { useBaseTableCurd } from "./hooks/useBaseTableCurd";
 
 const BaseTable = <T extends AnyObject>(props: BaseTableProps<T>, ref: any) => {
   const {
@@ -16,19 +17,22 @@ const BaseTable = <T extends AnyObject>(props: BaseTableProps<T>, ref: any) => {
     dataSource,
     rowKey = "id",
     toolbar,
-    CurdConfig,
+    CurdConfig = {},
     ...resProps
   } = props;
 
-  useImperativeHandle(ref, () => ({}));
-
   const processedColumns = useFormatColumn(columns);
+  const { doAddOrEdit } = useBaseTableCurd(CurdConfig);
+  useImperativeHandle(ref, () => ({ doAddOrEdit }));
+
   return (
     <div className={style.base_table}>
       <BaseSearchForm<T> columns={columns} />
-      <BaseTableAddOrEditDialog />
+      <BaseTableAddOrEditDialog<T> colunms={columns} />
       <div className={style.base_table_toolbar}>
-        <div className={style.base_table_toolbar_custom_button}>{toolbar}</div>
+        <div className={style.base_table_toolbar_custom_button}>
+          {typeof toolbar === "function" ? toolbar({ doAddOrEdit }) : toolbar}
+        </div>
       </div>
       <Table
         rowKey={rowKey}
