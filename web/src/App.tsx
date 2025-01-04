@@ -10,7 +10,6 @@ import {
 const App = () => {
   const columns = [
     { type: "index" as "index" | "selection" | "expand" | "operation" },
-
     {
       title: "NAME",
       dataIndex: "name"
@@ -32,13 +31,21 @@ const App = () => {
       rowKey={"index"}
       CurdConfig={{
         initFormData: { name: "a", age: 1 },
-        doAddOrEdit: () => {
-          console.log("doAddOrEdit", 111);
+
+        onAddOrEdit: values => {
+          console.log("onAddOrEdit", values);
+          return Promise.resolve();
         }
       }}
       toolbar={({ doAddOrEdit }) => (
         <Space>
-          <Button type="primary" icon={<PlusOutlined />} onClick={doAddOrEdit}>
+          <Button
+            type="primary"
+            icon={<PlusOutlined />}
+            onClick={() => {
+              doAddOrEdit();
+            }}
+          >
             新增
           </Button>
           <Button type="primary" icon={<UploadOutlined />}>

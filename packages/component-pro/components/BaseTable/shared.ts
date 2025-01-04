@@ -15,13 +15,16 @@ export type ColumnsType<RecordType = AnyObject> = (
 export type CurdConfig<T = AnyObject> = {
   initFormData?: InitFormDataType<T>;
   doAddOrEdit?: (values: T) => void;
+  onAddOrEdit?: (values: T) => Promise<any>;
 };
 
 /** 操作函数 */
 export type ToolbarButton<T = AnyObject> = ({
-  doAddOrEdit
+  doAddOrEdit,
+  onAddOrEdit
 }: {
   doAddOrEdit: (values?: T) => void;
+  onAddOrEdit?: (values?: T) => void;
 }) => React.ReactNode;
 
 export interface BaseTableColumnProps<T = AnyObject>
