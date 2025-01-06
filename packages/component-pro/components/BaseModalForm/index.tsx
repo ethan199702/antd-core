@@ -36,4 +36,3 @@ const BaseModalForm = forwardRef<BaseModalFormRef, IProps>((props, ref) => {
   );
 });
 export default BaseModalForm;
-

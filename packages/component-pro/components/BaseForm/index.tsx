@@ -5,14 +5,14 @@ import {
   Ref,
   ReactElement
 } from "react";
-import { Button, Form, FormInstance, Space } from "antd";
+import { Button, Form, Space } from "antd";
 
 import BaseFormItem from "./components/BaseFormItem";
-import type { IProps } from "./shared";
+import type { IProps, BaseFormInstance } from "./shared";
 
 const BaseForm = <T extends Record<string, any> = any>(
   props: IProps<T>,
-  ref: Ref<FormInstance<T>>
+  ref: Ref<BaseFormInstance<T>>
 ) => {
   const {
     formKey,
@@ -24,10 +24,10 @@ const BaseForm = <T extends Record<string, any> = any>(
     wrapperCol = { span: 18 },
     ...restProps
   } = props;
-  const formRef = useRef<FormInstance<T>>(null);
+  const formRef = useRef<BaseFormInstance<T>>(null);
 
   useImperativeHandle(ref, () => ({
-    ...(formRef.current as FormInstance<T>)
+    ...(formRef.current as BaseFormInstance<T>)
   }));
 
   const formFooter = () => {
@@ -70,5 +70,5 @@ const BaseForm = <T extends Record<string, any> = any>(
 };
 
 export default forwardRef(BaseForm) as <T extends Record<string, any> = any>(
-  props: IProps<T> & { ref?: Ref<FormInstance<T>> }
+  props: IProps<T> & { ref?: Ref<BaseFormInstance<T>> }
 ) => ReactElement;

@@ -1,6 +1,9 @@
 import { ReactNode } from "react";
 import { type FormProps, type FormItemProps } from "antd";
 import type { ValueType } from "../shared";
+import { FormInstance } from "antd";
+
+export interface BaseFormInstance<T = any> extends FormInstance<T> {}
 
 export interface IFieldItem<T = any> extends FormItemProps {
   name: string | number | (string | number)[];

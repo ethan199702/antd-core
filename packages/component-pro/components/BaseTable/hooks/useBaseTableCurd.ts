@@ -6,9 +6,9 @@ export const useBaseTableCurd = (
   modalFormRef: BaseTableAddOrEditRef
 ) => {
   const doAddOrEdit = (values: any) => {
-    if (!curdConfig.onAddOrEdit) {
+    if (!curdConfig.doAddOrEdit) {
       console.warn(
-        "表格的添加和新增请求暂未配置,请在CurdConfig配置中配置【onAddOrEdit】"
+        "表格的添加和新增请求暂未配置,请在CurdConfig配置中配置【doAddOrEdit】"
       );
     }
     if (curdConfig.onAddOrEdit) {

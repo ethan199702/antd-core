@@ -21,12 +21,25 @@ const BaseTableAddOrEditDialog = <T extends AnyObject>(
   props: Iprops<T>,
   ref: any
 ) => {
-  const { colunms } = props;
+  const { colunms, CurdConfig = {} } = props;
+  const { onAddOrEdit } = CurdConfig;
   const modalFormRef = useRef<BaseModalFormRef>(null);
   const fields = useCurdConfig(colunms);
 
   const handleOpenModal = () => {
     modalFormRef.current?.handleOpenModal();
+  };
+
+  const handleConfirm = async () => {
+    if (!onAddOrEdit)
+      console.warn(
+        "表格的添加和新增请求暂未配置,请在CurdConfig配置中配置【onAddOrEdit】"
+      );
+    else {
+      const param = modalFormRef.current?.getFieldsValue();
+      return onAddOrEdit(param);
+    }
+    return false;
   };
 
   useImperativeHandle(ref, () => ({
@@ -39,6 +52,7 @@ const BaseTableAddOrEditDialog = <T extends AnyObject>(
       title="新增"
       fields={fields}
       ref={modalFormRef}
+      confirm={handleConfirm}
     ></BaseModalForm>
   );
 };

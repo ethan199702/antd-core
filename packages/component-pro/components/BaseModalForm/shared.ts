@@ -4,8 +4,9 @@ import type {
 } from "../BaseModal/shared";
 
 import type { IProps as BaseFormProps } from "../BaseForm/shared";
+import type { BaseFormInstance } from "../BaseForm/shared";
 
-export interface BaseModalFormRef extends BaseModalRef {}
+export interface BaseModalFormRef extends BaseModalRef, BaseFormInstance {}
 
 export interface IProps<T = Record<string, any>>
   extends Omit<BaseModalIProps, "confirm">,
@@ -16,4 +17,3 @@ export interface IProps<T = Record<string, any>>
 }
 
 export { BaseFormProps };
-

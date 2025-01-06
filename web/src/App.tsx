@@ -31,10 +31,9 @@ const App = () => {
       rowKey={"index"}
       CurdConfig={{
         initFormData: { name: "a", age: 1 },
-
         onAddOrEdit: values => {
           console.log("onAddOrEdit", values);
-          return Promise.resolve();
+          return false;
         }
       }}
       toolbar={({ doAddOrEdit }) => (

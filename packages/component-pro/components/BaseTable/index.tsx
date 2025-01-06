@@ -3,7 +3,9 @@ import {
   useImperativeHandle,
   ReactElement,
   useRef,
-  useEffect
+  useEffect,
+  useState,
+  ReactNode
 } from "react";
 
 import { Table } from "antd";
@@ -27,7 +29,8 @@ const BaseTable = <T extends AnyObject>(props: BaseTableProps<T>, ref: any) => {
     ...resProps
   } = props;
   const addOrEditRef = useRef<BaseTableAddOrEditRef>(null);
-  const addOrEditHandlerRef = useRef<any>();
+  const [renderToolbar, setRenderToolbar] = useState<ReactNode>(null);
+  const addOrEditHandlerRef = useRef<any>({});
   const processedColumns = useFormatColumn(columns);
 
   useEffect(() => {
@@ -36,18 +39,17 @@ const BaseTable = <T extends AnyObject>(props: BaseTableProps<T>, ref: any) => {
         CurdConfig,
         addOrEditRef.current
       );
+      if (typeof toolbar === "function") {
+        setRenderToolbar(toolbar({ doAddOrEdit }));
+      } else {
+        setRenderToolbar(toolbar);
+      }
+
       addOrEditHandlerRef.current = {
         doAddOrEdit
       };
     }
-  }, [addOrEditRef.current]);
-
-  const renderToolbar = () => {
-    if (typeof toolbar === "function") {
-      return toolbar({ doAddOrEdit: addOrEditHandlerRef.current!.doAddOrEdit });
-    }
-    return toolbar;
-  };
+  }, []);
 
   useImperativeHandle(ref, () => ({
     doAddOrEdit: addOrEditHandlerRef.current?.doAddOrEdit
@@ -56,10 +58,14 @@ const BaseTable = <T extends AnyObject>(props: BaseTableProps<T>, ref: any) => {
   return (
     <div className={style.base_table}>
       <BaseSearchForm<T> columns={columns} />
-      <BaseTableAddOrEditDialog<T> colunms={columns} ref={addOrEditRef} />
+      <BaseTableAddOrEditDialog<T>
+        colunms={columns}
+        ref={addOrEditRef}
+        CurdConfig={CurdConfig}
+      />
       <div className={style.base_table_toolbar}>
         <div className={style.base_table_toolbar_custom_button}>
-          {renderToolbar()}
+          {renderToolbar}
         </div>
       </div>
       <Table

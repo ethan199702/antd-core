@@ -15,7 +15,7 @@ export type ColumnsType<RecordType = AnyObject> = (
 export type CurdConfig<T = AnyObject> = {
   initFormData?: InitFormDataType<T>;
   doAddOrEdit?: (values: T) => void;
-  onAddOrEdit?: (values: T) => Promise<any>;
+  onAddOrEdit?: (values: T) => boolean;
 };
 
 /** 操作函数 */
@@ -24,7 +24,7 @@ export type ToolbarButton<T = AnyObject> = ({
   onAddOrEdit
 }: {
   doAddOrEdit: (values?: T) => void;
-  onAddOrEdit?: (values?: T) => void;
+  onAddOrEdit?: (values?: T) => boolean;
 }) => React.ReactNode;
 
 export interface BaseTableColumnProps<T = AnyObject>
