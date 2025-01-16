@@ -1,5 +1,5 @@
 {
-  "name": "@antd-core/context",
+  "name": "@antd-core/core",
   "version": "0.0.3",
   "type": "module",
   "main": "dist/index.umd.js",
@@ -27,7 +27,12 @@
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "@antd-core/component-pro": "workspace:*",
+    "@antd-core/components": "workspace:*",
+    "@antd-core/context": "workspace:*",
+    "@antd-core/hooks": "workspace:*",
+    "@antd-core/utils": "workspace:*"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
