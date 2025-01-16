@@ -1,6 +1,6 @@
 {
   "name": "@antd-core/core",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "main": "dist/index.umd.js",
   "module ": "dist/index.es.js",
@@ -26,13 +26,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "@antd-core/component-pro": "workspace:*",
     "@antd-core/components": "workspace:*",
     "@antd-core/context": "workspace:*",
     "@antd-core/hooks": "workspace:*",
-    "@antd-core/utils": "workspace:*"
+    "@antd-core/utils": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
