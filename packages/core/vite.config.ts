@@ -21,7 +21,15 @@ export default defineConfig({
     },
     rollupOptions: {
       // 确保外部化处理
-      external: ["react", "react-dom"],
+      external: [
+        "react",
+        "react-dom",
+        "@antd-core/component-pro",
+        "@antd-core/components",
+        "@antd-core/hooks",
+        "@antd-core/utils",
+        "@antd-core/context"
+      ],
       output: {
         globals: {
           react: "React",
