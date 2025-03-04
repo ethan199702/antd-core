@@ -26,10 +26,12 @@ const BaseTable = <T extends AnyObject>(props: BaseTableProps<T>, ref: any) => {
     rowKey = "id",
     toolbar,
     CurdConfig = {},
+    request,
     ...resProps
   } = props;
   const addOrEditRef = useRef<BaseTableAddOrEditRef>(null);
   const [renderToolbar, setRenderToolbar] = useState<ReactNode>(null);
+  const [tableData, setTableData] = useState<T[]>([]);
   const addOrEditHandlerRef = useRef<any>({});
   const processedColumns = useFormatColumn(columns);
 
@@ -51,6 +53,13 @@ const BaseTable = <T extends AnyObject>(props: BaseTableProps<T>, ref: any) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (request)
+      request({ pageNo: 1, pageSize: 10 }).then(res => {
+        setTableData(res.data);
+      });
+  }, []);
+
   useImperativeHandle(ref, () => ({
     doAddOrEdit: addOrEditHandlerRef.current?.doAddOrEdit
   }));
@@ -70,7 +79,7 @@ const BaseTable = <T extends AnyObject>(props: BaseTableProps<T>, ref: any) => {
       </div>
       <Table
         rowKey={rowKey}
-        dataSource={dataSource}
+        dataSource={dataSource || tableData}
         columns={processedColumns}
         {...resProps}
       ></Table>

@@ -61,4 +61,12 @@ export interface BaseTableProps<T = AnyObject> extends TableProps<T> {
   columns: BaseTableColumnProps<T>[];
   toolbar?: React.ReactNode | ToolbarButton<T>;
   CurdConfig?: CurdConfig<T>;
+  request?: ({
+    pageSize,
+    pageNo,
+    ...reset
+  }: {
+    pageSize: number;
+    pageNo: number;
+  }) => Promise<{ data: T[]; total: number }>;
 }

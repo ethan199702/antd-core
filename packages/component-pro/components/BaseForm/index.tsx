@@ -8,6 +8,7 @@ import {
 import { Button, Form, Space } from "antd";
 
 import BaseFormItem from "./components/BaseFormItem";
+import styles from "./index.module.less";
 import type { IProps, BaseFormInstance } from "./shared";
 
 const BaseForm = <T extends Record<string, any> = any>(
@@ -60,10 +61,12 @@ const BaseForm = <T extends Record<string, any> = any>(
       labelCol={labelCol}
       wrapperCol={wrapperCol}
       onFinish={props?.onFinish}
+      className={styles.base_form}
     >
       {fields.map((field, index) => (
         <BaseFormItem {...field} key={index}></BaseFormItem>
       ))}
+
       {formFooter()}
     </Form>
   );

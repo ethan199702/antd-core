@@ -17,7 +17,10 @@ export const useFormatSearch = (columns: BaseTableColumnProps[]) => {
         .map(column => ({
           name: column.dataIndex,
           label: column.title,
-          valueType: column.valueType || "text"
+          valueType: column.valueType || "text",
+          attrs: {
+            placeholder: `请输入${column.title}`
+          }
         }));
     });
   }, [columns]);
